@@ -14,7 +14,7 @@ Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
 
-import os
+#import telegram
 import logging
 import random
 import datetime
@@ -224,12 +224,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    #updater.start_polling(poll_interval = 1.0,timeout=20)
-    PORT = int(os.environ.get('PORT', '5000'))
-    updater.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path=TELEGRAM_TOKEN)
-    updater.bot.setWebhook("https://got-meme-bot.herokuapp.com/" + TELEGRAM_TOKEN)
+    updater.start_polling(poll_interval = 1.0,timeout=20)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
