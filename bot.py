@@ -14,7 +14,7 @@ Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
 
-#import telegram
+import os
 import logging
 import random
 import datetime
@@ -225,9 +225,9 @@ def main():
 
     # Start the Bot
     #updater.start_polling(poll_interval = 1.0,timeout=20)
-
+    PORT = int(os.environ.get('PORT', '5000'))
     updater.start_webhook(listen="0.0.0.0",
-                          port=5000,
+                          port=PORT,
                           url_path=TELEGRAM_TOKEN)
     updater.bot.setWebhook("https://got-meme-bot.herokuapp.com/" + TELEGRAM_TOKEN)
 
