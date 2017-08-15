@@ -18,7 +18,6 @@ bot.
 import logging
 import random
 import datetime
-import os
 import psycopg2
 import urlparse
 
