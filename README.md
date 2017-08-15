@@ -14,5 +14,5 @@ Group chat functionality.
 
 Inline mode
 
-Allow users to submit got memess to the photo library
+Allow users to submit got memes to the photo library
 
