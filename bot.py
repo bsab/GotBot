@@ -31,15 +31,18 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-# AWS configuration
-AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
+try:
+    # AWS configuration
+    AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
 
-# Connect to the database
-DATABASE_URL=config('DATABASE_URL')
+    # Connect to the database
+    DATABASE_URL=config('DATABASE_URL')
 
-TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
+    TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
+except Exception as e:
+    print "Telegram::exception --> " + str(e)
 
 session = Session(aws_access_key_id=AWS_ACCESS_KEY_ID,
                   aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
