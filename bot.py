@@ -31,18 +31,15 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-try:
-    # AWS configuration
-    AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
+# AWS configuration
+AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
 
-    # Connect to the database
-    DATABASE_URL=config('DATABASE_URL')
+# Connect to the database
+DATABASE_URL=config('DATABASE_URL')
 
-    TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
-except Exception as e:
-    print "Telegram::exception --> " + str(e)
+TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
 
 session = Session(aws_access_key_id=AWS_ACCESS_KEY_ID,
                   aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
@@ -227,7 +224,12 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_polling(poll_interval = 1.0,timeout=20)
+    #updater.start_polling(poll_interval = 1.0,timeout=20)
+
+    updater.start_webhook(listen="0.0.0.0",
+                          port=5000,
+                          url_path=TELEGRAM_TOKEN)
+    updater.bot.setWebhook("https://got-meme-bot.herokuapp.com/" + TELEGRAM_TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
