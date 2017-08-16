@@ -225,7 +225,7 @@ def main():
 
     # Start the Bot
     #updater.start_polling(poll_interval = 1.0,timeout=20)
-    PORT = int(os.environ.get('PORT', '5000'))
+    PORT = int(os.environ.get('PORT'))
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TELEGRAM_TOKEN)
