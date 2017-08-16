@@ -20,6 +20,7 @@ import random
 import datetime
 import psycopg2
 import urlparse
+import telegram
 
 from decouple import config
 from boto3.session import Session
@@ -67,7 +68,11 @@ cur = conn.cursor()
 # Command handlers
 # To start a bot
 def start(bot, update):
-    update.message.reply_text("""Hi! I'm a GotMeme bot. I am the fire that burns against the cold. \nCheck out /help for all available commands now.\nI'm still under development. Stay tuned!""")
+    #update.message.reply_text("""Hi! I'm a GotMeme bot. I am the fire that burns against the cold. \nCheck out /help for all available commands now.\nI'm still under development. Stay tuned!""")
+
+
+    update.message.reply_text(text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.',
+                              parse_mode=telegram.ParseMode.HTML)
 
 # Helper function
 def help(bot, update):
@@ -78,7 +83,7 @@ def help(bot, update):
         """\nFor all questions please contact dev @the_bas""")
 
 
-# For users to manually retrieve a cat photo
+# For users to manually retrieve a meme
 def gotmeme(bot, update):
     #print ">>> gotmeme"
     rint = random.randint(0,len(meme_list)-1)
