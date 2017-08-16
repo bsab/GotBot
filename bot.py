@@ -71,7 +71,7 @@ def start(bot, update):
     #update.message.reply_text("""Hi! I'm a GotMeme bot. I am the fire that burns against the cold. \nCheck out /help for all available commands now.\nI'm still under development. Stay tuned!""")
 
 
-    update.message.reply_text(text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.',
+    update.message.reply_text(text='Hi! I\'m a <bold>GotMeme</bold> bot. I am the fire that burns against the cold. <br>Check out /help for all available commands now.<br>I\'m still under development. Stay tuned!',
                               parse_mode=telegram.ParseMode.HTML)
 
 # Helper function
