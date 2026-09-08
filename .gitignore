@@ -72,8 +72,7 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# pyenv
-.python-version
+# The shared Python runtime is tracked in .python-version.
 
 # celery beat schedule file
 celerybeat-schedule
@@ -83,6 +82,8 @@ celerybeat-schedule
 
 # dotenv
 .env
+.env.*
+!.env.example
 
 # virtualenv
 .venv
